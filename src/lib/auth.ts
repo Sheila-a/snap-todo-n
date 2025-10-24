@@ -1,8 +1,8 @@
-// src/lib/auth.ts
 import fs from 'fs';
 import path from 'path';
 import bcrypt from 'bcryptjs';
 import jwt, { SignOptions } from 'jsonwebtoken';
+import type { StringValue } from 'ms';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const USERS_FILE = path.join(DATA_DIR, 'users.json');
@@ -78,7 +78,7 @@ export async function verifyPassword(email: string, password: string) {
 
 export function createToken(payload: object) {
   const secret = process.env.JWT_SECRET!;
-  const expiresIn = process.env.JWT_EXPIRES_IN || '7d';
+  const expiresIn = (process.env.JWT_EXPIRES_IN || '7d') as StringValue;
 
   const options: SignOptions = { expiresIn };
   return jwt.sign(payload, secret, options);
