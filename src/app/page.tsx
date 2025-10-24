@@ -134,7 +134,7 @@ function LoginForm() {
       <Button
         className={`${brandBg} w-full cursor-pointer py-6 mt-6`}
         type='submit'
-        disabled={loading}
+        disabled={loading || !email || !password}
       >
         {loading ? (
           <>
