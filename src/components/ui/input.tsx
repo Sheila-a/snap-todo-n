@@ -5,7 +5,7 @@ import { Eye, EyeClosed } from 'lucide-react';
 
 function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
-  const inputRef = React.useRef(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
